@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        td {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <p>
+        <select id="yearSelect"></select>
+        <select id="monthSelect"></select>
+        <strong></strong>
+    </p>
+
+    <table id="tab" width="100%" border="1">
+        <thead>
+            <tr>
+                <th>日</th>
+                <th>一</th>
+                <th>二</th>
+                <th>三</th>
+                <th>四</th>
+                <th>五</th>
+                <th>六</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</body>
+<script>
+    var yearSelectElement = document.querySelector('#yearSelect');
+    var monthSelectElement = document.querySelector('#monthSelect');
+    var tbody = document.querySelector('tbody');
+    var strongElement = document.querySelector('strong');
+
+    var nowDate = new Date();
+    var html = '';
+    for (var i = 1970; i < 2100; i++) {
+        if (i == nowDate.getFullYear()) {
+            html = '<option selected>' + i + '</option>' + html;
+        } else {
+            html = '<option>' + i +'</option>' + html;
+        }
+    }
+    yearSelectElement.innerHTML = html;
+
+    var html = '';
+    for (var i = 0; i < 12; i++) {
+        if (i == nowDate.getMonth()) {
+            html += '<option value="'+ i +'"selected>' + (i+1) +'</option>';
+        } else {
+            html += '<option value="'+ i +'">' + (i+1) +'</option>';
+        }
+    }
+    monthSelectElement.innerHTML = html;
+
+    calendar(nowDate.getFullYear(), nowDate.getMonth());
+    yearSelectElement.onchange = monthSelectElement.onchange = function () {
+        calendar(yearSelectElement.value,monthSelectElement.value);
+    }
+    
+    function calendar(year, month) {
+        year = Number(year);
+        month = Number(month);
+        strongElement.innerHTML = year + '年' + ( month + 1) + '月';
+        var html = '<tr>';
+        for (var i = 1; i <= 42; i++) {
+            if (i % 7 == 1 && i != 1) {
+                html += '</tr><tr>';
+            }
+        }
+
+        var v = i - getFirstDay(year,month);
+        if ( v < 1 || v > getDays(year,month)) {
+            html += '<td>&nbsp;</td>';
+        } else {
+            if (i % 7 == 1 || i % 7 == 0) {
+                html += '<td style="color:red">' + v + '</td>';
+            } else if (
+                    year == nowDate.getFullYear() && month == nowDate.getMonth() && v == nowDate.getDate()
+            ){
+                html += '<td style="background: red;color:white;"' + v +'</td>';
+            } else {
+                html += '<td>' + v +'</td>';
+            }
+        }
+
+        html += '</tr>';
+        tbody.innerHTML = html;
+    }
+
+    function getDays(y,m) {
+        return new Date(y, m+1, 1, -1, 0, 0).getDate();
+        var date = new Date(y, m+1, 1, -1, 0, 0);
+        return date.getDate();
+    }
+    
+    function getFirstDay(y, m) {
+        return new Date(y, m, 1).getDay();
+    }
+</script>
+</html>
