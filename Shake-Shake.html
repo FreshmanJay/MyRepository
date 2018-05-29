@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #div1 {
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            left: 400px;
+            top: 200px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="div1"></div>
+</body>
+<script>
+    var div1 = document.querySelector("#div1");
+    document.onclick = function () {
+        var a = true;
+        setInterval(function () {
+            div1.style.left = (a ? 380 : 420) + 'px';
+            a = !a;
+        },100);
+    }
+</script>
+</html>
