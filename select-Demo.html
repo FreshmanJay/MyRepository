@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>select-Demo</title>
+</head>
+<body>
+    <h1>Select Demo</h1>
+    <div id="select"></div>
+</body>
+<script>
+    'use strict';
+    function Select(options) {
+        //your code here
+        var layOut;
+        for (var i = 0; i< options.data.length; i++){
+            layOut += "<option value='" + options.data[i] + "'>" + options.data[i] + "</option>";
+        }
+        var _Select = document.createElement("select");
+        _Select.innerHTML = layOut;
+
+        _Select.style.webkitAppearance = 'none'; //去掉右边下拉三角
+        _Select.style.padding = "0 10px"; //适当有一些内边距
+        _Select.style.backgroundColor = "#fff"; //背景设为白色
+
+
+        _Select.addEventListener("change",function (e) {
+            options.onchange(e.target);
+        })
+        document.querySelector(options.target).appendChild(_Select);
+    }
+    Select({
+        target: '#select',
+        data: ['北京', '上海', '广州', '深圳'],
+        onchange: function (ev) {
+            console.log(ev.value);
+        }
+    })
+</script>
+</html>
