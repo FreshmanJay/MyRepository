@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lottery</title>
+</head>
+<body>
+    <div id="wraper">
+
+    </div>
+    <form action="#">
+        <input type="button" id="start" value="开始">
+        <input type="button" id="stop" value="停止">
+    </form>
+</body>
+<script>
+    var ying = ['她', '还', '有人', '喜欢', '不了', '累了', '爱', '哎', '等我', '没有', '傻瓜'];
+    var wraper = document.getElementById('wraper');
+        start = document.getElementById('start');
+        stop = document.getElementById('stop');
+        index = 0;
+        time = null;
+    start.onclick = function () {
+        clearInterval(time);
+        time = setInterval(function () {
+            for (var i = 0; i < ying.length; i++){
+                wraper.innerHTML = ying[index];
+            }
+            index++;
+            if (index > ying.length - 1){
+                index = 0;
+            }
+        },50)
+    }
+    stop.onclick = function () {
+        clearInterval(time);
+    }
+</script>
+</html>
