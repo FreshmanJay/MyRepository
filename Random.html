@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Random CAPTCHA</title>
+    <style>
+        #captcha {
+            background-color: #f60;
+        }
+    </style>
+</head>
+<body>
+    <div id="verify">
+        <div id="captcha"></div>
+    </div>
+</body>
+<script>
+    var str = "asjdasdnasoldasoldasndndlndkasndasdn";
+    var stred = '';
+    var sps = document.querySelector("#captcha");
+    for (var i= 0; i < 4; i++){
+        stred += str[Math.floor(Math.random()*str.length)];
+    }
+    sps.innerHTML = stred;
+</script>
+</html>
