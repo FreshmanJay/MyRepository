@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Paging</title>
+    <link href="https://cdn.bootcss.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        table#table_head>thead>tr>th {
+            width: 40em;
+            text-align: left;
+        }
+        tbody#table_body_result>tr>td {
+            width: 40em;
+            text-align: left;
+        }
+        .table td, .table th {
+            border-top: 0;
+        }
+    </style>
+</head>
+<body>
+    <table id="table_head" class="table table-hover">
+        <thead>
+            <tr>
+                <th>日期</th>
+                <th>小时</th>
+                <th>温度</th>
+            </tr>
+        </thead>
+    </table>
+    <table class="table table-hover table-striped" id="table_result">
+        <tbody id="table_body_result">
+            <tr>
+                <td>2018-06-03</td>
+                <td>100</td>
+                <td>100</td>
+            </tr>
+            <tr>
+                <td>2018-06-03</td>
+                <td>100</td>
+                <td>100</td>
+            </tr>
+            <tr>
+                <td>2018-06-03</td>
+                <td>100</td>
+                <td>100</td>
+            </tr>
+            <tr>
+                <td>2018-06-03</td>
+                <td>100</td>
+                <td>100</td>
+            </tr>
+            <tr>
+                <td>2018-06-03</td>
+                <td>100</td>
+                <td>100</td>
+            </tr>
+            <tr>
+                <td>2018-06-03</td>
+                <td>100</td>
+                <td>100</td>
+            </tr>
+            <tr>
+                <td>2018-06-03</td>
+                <td>100</td>
+                <td>100</td>
+            </tr>
+            <tr>
+                <td>2018-06-03</td>
+                <td>100</td>
+                <td>100</td>
+            </tr>
+            <tr>
+                <td>2018-06-03</td>
+                <td>100</td>
+                <td>100</td>
+            </tr>
+            <tr>
+                <td>2018-06-03</td>
+                <td>100</td>
+                <td>100</td>
+            </tr>
+            <tr>
+                <td>2018-06-03</td>
+                <td>100</td>
+                <td>100</td>
+            </tr>
+            <tr>
+                <td>2018-06-03</td>
+                <td>100</td>
+                <td>100</td>
+            </tr>
+            <tr>
+                <td>2018-06-03</td>
+                <td>100</td>
+                <td>100</td>
+            </tr>
+            <tr>
+                <td>2018-06-03</td>
+                <td>100</td>
+                <td>100</td>
+            </tr>
+            <tr>
+                <td>2018-06-03</td>
+                <td>100</td>
+                <td>100</td>
+            </tr>
+            <tr>
+                <td>2018-06-03</td>
+                <td>100</td>
+                <td>100</td>
+            </tr>
+            <tr>
+                <td>2018-06-03</td>
+                <td>100</td>
+                <td>100</td>
+            </tr>
+            <tr>
+                <td>2018-06-03</td>
+                <td>100</td>
+                <td>100</td>
+            </tr>
+            <tr>
+                <td>2018-06-03</td>
+                <td>100</td>
+                <td>100</td>
+            </tr>
+            <tr>
+                <td>2018-06-03</td>
+                <td>100</td>
+                <td>100</td>
+            </tr>
+            <tr>
+                <td>2018-06-03</td>
+                <td>100</td>
+                <td>100</td>
+            </tr>
+            <tr>
+                <td>2018-06-03</td>
+                <td>100</td>
+                <td>100</td>
+            </tr>
+            <tr>
+                <td>2018-06-03</td>
+                <td>100</td>
+                <td>100</td>
+            </tr>
+            <tr>
+                <td>2018-06-03</td>
+                <td>100</td>
+                <td>100</td>
+            </tr>
+            <tr>
+                <td>2018-06-03</td>
+                <td>100</td>
+                <td>100</td>
+            </tr>
+            <tr>
+                <td>2018-06-03</td>
+                <td>100</td>
+                <td>100</td>
+            </tr>
+            <tr>
+                <td>2018-06-03</td>
+                <td>100</td>
+                <td>100</td>
+            </tr>
+            <tr>
+                <td>2018-06-03</td>
+                <td>100</td>
+                <td>100</td>
+            </tr>
+            <tr>
+                <td>2018-06-03</td>
+                <td>100</td>
+                <td>100</td>
+            </tr>
+            <tr>
+                <td>2018-06-03</td>
+                <td>100</td>
+                <td>100</td>
+            </tr>
+            <tr>
+                <td>2018-06-03</td>
+                <td>100</td>
+                <td>100</td>
+            </tr>
+            <tr>
+                <td>2018-06-03</td>
+                <td>100</td>
+                <td>100</td>
+            </tr>
+        </tbody>
+    </table>
+    <div id="barcon" name="barcon"></div>
+</body>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script>
+    goPage(1,15);
+    function goPage(pno, psize) {
+        var itable = document.getElementById('table_result');
+        var num = itable.rows.length;
+        var totalPage = 0;
+        var pageSize = psize;
+
+        if (num / pageSize > parseInt(num / pageSize)){
+            totalPage = parseInt(num / pageSize) + 1;
+        } else {
+            totalPage = parseInt(num / pageSize);
+        }
+
+        var currentPage = pno;
+        var startRow = (currentPage - 1)*pageSize + 1;
+        var endRow = currentPage*pageSize;
+        endRow = (endRow > num) ? num : endRow;
+
+        for (var i = 1; i < (num + 1); i++){
+            var irow = itable.rows[i - 1];
+            if (i >= startRow && i <= endRow){
+                irow.style.display = 'block';
+            } else {
+                irow.style.display = 'none';
+            }
+        }
+        var tempStr = '';
+        if (currentPage > 1) {
+            tempStr += "<a href=\"#\" onClick=\"goPage(" + (currentPage - 1) + "," + psize + ")\"><上一页&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>"
+            for (var j = 1; j <= totalPage; j++) {
+                tempStr += "<a href=\"#\" onClick=\"goPage(" + j + "," + psize + ")\">" + j + "&nbsp;&nbsp;&nbsp;</a>"
+            }
+        } else {
+            tempStr += "<上一页&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+            for (var j = 1; j <= totalPage; j++) {
+                tempStr += "<a href=\"#\" onClick=\"goPage(" + j + "," + psize + ")\">" + j + "&nbsp;&nbsp;&nbsp;</a>"
+            }
+        }
+        if (currentPage < totalPage) {
+            tempStr += "<a href=\"#\" onClick=\"goPage(" + (currentPage + 1) + "," + psize + ")\">下一页>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>";
+            for (var j = 1; j <= totalPage; j++) {
+            }
+        } else {
+            tempStr += "  下一页>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+            for (var j = 1; j <= totalPage; j++) {
+            }
+        }
+        document.getElementById('barcon').innerHTML = tempStr;
+    }
+</script>
+</html>
