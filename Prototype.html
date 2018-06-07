@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Prototype</title>
+</head>
+<body>
+
+</body>
+<script>
+    Function.prototype.method = function (funcName, callBack) {
+        this.prototype[funcName] = callBack;
+        return this;
+    }
+
+    Number.method('integer', function () {
+        return Math[this > 0 ? "ceil" : "floor"](this);
+    });
+
+    String.method("trim", function () {
+        return this.replace(/^\s+|\s+$/);
+    });
+</script>
+</html>
