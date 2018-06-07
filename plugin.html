@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Module</title>
+</head>
+<body>
+    <div id="hello"></div>
+    <div id="hi"></div>
+</body>
+<script>
+    var HelloWorld = function (objId) {
+        var _get_dom = function (Id) {
+            return document.getElementById(Id);
+        }
+        var _aim_obj = _get_dom(objId);
+        var _say_hello = function (str) {
+            _aim_obj.innerHTML = str;
+        }
+        return {
+            sayHello: _say_hello
+        }
+    }
+
+    var Hei = new HelloWorld('hello');
+    Hei.sayHello('Hello World');
+
+    var Hei2 = new HelloWorld('hi');
+    Hei2.sayHello('hi');
+</script>
+</html>
