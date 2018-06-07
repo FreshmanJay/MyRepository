@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>_plugin</title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+    ;
+    var plugin = (function () {
+        function _firstFunc(str) {
+            console.log(str);
+        };
+        return {
+            firstFunc:_firstFunc,
+        };
+    })();
+
+    plugin.firstFunc("Hello! I am firstFunc");
+</script>
+</html>
