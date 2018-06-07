@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Module</title>
+</head>
+<body>
+    <div id="hello"></div>
+</body>
+<script>
+    var HelloWorld = (function () {
+        var _getDom = function (Id) {
+            return document.getElementById(Id);
+        }
+        var _sayHello = function (Id, str) {
+            _getDom(Id).innerHTML = str;
+        }
+        return {
+            getDom: _getDom,
+            sayHello: _sayHello
+        }
+    }())
+
+    HelloWorld.sayHello('hello', 'hello text');
+</script>
+</html>
