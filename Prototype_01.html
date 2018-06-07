@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Prototype</title>
+</head>
+<body>
+    <div id="address"><span>https://content.pivotal.io/blog/javascript-constructors-prototypes-and-the-new-keyword</span></div>
+</body>
+<script>
+    function Person(name) {
+        this.name = name;
+    }
+
+    Person.prototype = {
+        say: function () {
+            alert('hi');
+        },
+        sayName: function () {
+            alert(this.name);
+        }
+    }
+
+    function Programmer() {
+        this.say = function () {
+            alert('I am a Programmer, my name is' + this.name);
+        }
+    }
+
+    Programmer.prototype = new Person('mike');  //实现了类似Java的抽象类功能
+    //手动修正构造函数
+    Programmer.prototype.constructor = Programmer; //构造器指向具体的构造函数
+    var p1 = new Programmer();
+
+    console.dir(Programmer.prototype.constructor);
+    console.dir(p1.constructor);
+    console.dir(p1);
+</script>
+</html>
