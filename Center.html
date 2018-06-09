@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Center</title>
+    <style>
+        #container {
+            text-align: center;
+            height: 400px;
+            background-color: #f60;
+        }
+        #container:before {
+            content: '';
+            height: 100%;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        #center {
+            display: inline-block;
+            vertical-align: middle;
+            background-color: #f20;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="center">
+            <span class="middle">居中布局</span>
+        </div>
+    </div>
+</body>
+</html>
